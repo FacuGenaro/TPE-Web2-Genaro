@@ -9,8 +9,10 @@ class ConfigApp
       'home'=> 'NoticiasController#getIndex',
       'borrar'=> 'NoticiasController#borrarNoticia',
       'editar'=> 'NoticiasController#editarNoticia',
-      'confirmarEdit'=> 'NoticiasController#guardarEdicion',
-      'agregar'=> 'NoticiasController#agregarNoticia'
+      'confirmarEdit'=> 'NoticiasController#confirmarEdit',
+      'agregar'=> 'NoticiasController#agregarNoticia',
+      'login'=> 'LoginController#login',
+      'verificarLogin' => 'LoginController#verificarLogin'
     ];
 
 }

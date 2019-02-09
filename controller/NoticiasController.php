@@ -44,23 +44,23 @@
     }
 
     function editarNoticia($id_noticia){
-      $id_noticia =  $id_noticia[0];
       $noticia = $this->model->getNoticia($id_noticia);
       $this->view->editarNoticia("Editar Noticia", $noticia);
 }
 
-    function guardarEdicion(){
-      $id_noticia = $_POST["id_noticiaForm"];
-      $titulo = $_POST["tituloForm"];
-      $contenidoPreview = $_POST["contenidoPreview"];
-      $categoria = $_POST["categoriaForm"];
-      $imagen = $_POST["imagenForm"];
-      if ($categoria == "Futbol"){
-        $id_categoria = 1;
+    function confirmarEdit(){
+      $id_noticia = $_POST['id_noticiaForm'];
+      $tituloForm = $_POST['tituloForm'];
+      $contenidoPreview = $_POST['contenidoPreview'];
+      $categoriaForm = $_POST['categoriaForm'];
+      $imagen = $_POST['imagen'];
+      var_dump($imagen);
+      if ($categoriaForm== "Futbol"){
+        $categoriaForm = 1;
       }else{
-        $id_categoria =2;
+        $categoriaForm =2;
       }
-      $this->model->guardarEdicionDB($id_noticia,$titulo,$contenidoPreview,$id_categoria, $imagen);
+      $this->model->guardarEdicionDB($id_noticia,$tituloForm,$contenidoPreview,$categoriaForm, $imagen);
       header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
     }
 }

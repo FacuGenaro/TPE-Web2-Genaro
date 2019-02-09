@@ -18,10 +18,9 @@ function mostrarPagina($titulo, $arrNoticias){
   }
 
   function editarNoticia($titulo, $noticia){
+//$this->Smarty->debugging = true;
     $this->Smarty->assign('titulo',$titulo); // El 'Titulo' del assign puede ser cualquier valor
     $this->Smarty->assign('noticia',$noticia);
-    //$this->Smarty->display('templates/index.tpl');
-    // $this->Smarty->debugging = true;
     $this->Smarty->assign('index',"http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
     $this->Smarty->display('templates/editarNoticia.tpl');
   }

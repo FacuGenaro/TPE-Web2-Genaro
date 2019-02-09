@@ -21,9 +21,10 @@ class NoticiasModel
   }
 
     function getNoticia($id_noticia){ //busca noticia individual en la bd
+      $id_noticia2 = (int)$id_noticia[0]; //Acá me daba error porque queria convertir un string a un int... el metodo del video no me funcionó pero esto si.
       $sentencia = $this->db->prepare( "select * from noticia where id_noticia = ?");
-      $sentencia->execute(array($id_noticia));
-      return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+      $sentencia->execute(array($id_noticia2));
+      return $sentencia->fetch(PDO::FETCH_ASSOC);
   }
 
   function insertarNoticia($titulo, $contenidoPreview, $imagen, $categoria, $id_categoria){
@@ -38,7 +39,6 @@ class NoticiasModel
   }
 
   function guardarEdicionDB($id_noticia,$titulo,$contenidoPreview,$id_categoria, $imagen){
-    echo $id_noticia."".$titulo ."".$contenidoPreview."".$imagen."".$id_categoria;
     $sentencia = $this->db->prepare( "update noticia set titulo = ?, contenidoPreview = ?, imagen = ?, id_categoria = ? where id_noticia= ?");
     $sentencia->execute(array($titulo,$contenidoPreview, $imagen, $id_categoria, $id_noticia));
   }
