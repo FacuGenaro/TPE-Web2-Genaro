@@ -1,18 +1,17 @@
 <?php
 
-require_once "index.php";
-//require_once "noticiaAmpliada.php";
-require_once "PDO.php";
+require_once "controller/NoticiasController.php";
 
 
-
+$controller = new NoticiasController();
 $partesURL = explode('/', $_GET['action']);
+
 if ($partesURL[0] == '') {
-  getIndex();
+  $controller->getIndex();
 }elseif ($partesURL[0] == 'borrar') {
-  borrarNoticia($partesURL[1]);
+  $controller->borrarNoticia($partesURL[1]);
 }elseif ($partesURL[0] == 'agregar') {
-  agregarNoticia();
+  $controller->agregarNoticia();
 }
 // }elseif ($partesURL[0] == 'editar') {
 //   editarNoticia($partesURL[1]);
