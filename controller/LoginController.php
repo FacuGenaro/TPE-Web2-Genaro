@@ -1,6 +1,6 @@
-<?php
-require_once "./view/LoginView.php";
-//require_once "./model/LoginModel.php";
+  <?php
+  require_once "./view/LoginView.php";
+  //require_once "./model/LoginModel.php";
 
 class LoginController
 {
@@ -21,19 +21,19 @@ class LoginController
   }
 
   function verificarLogin(){
-    $user = $_POST["usuarioId"];
-    $pass = $_POST["password"];
-    $dbUser = $this->model->getUser($user);
-    var_dump ($dbUser);
-    if (isset($dbUser)){
-      if (passwordVerify($pass,$dbUser[0]["pass"])) {
-        // header ('Location',"http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
-      }else{
-        $this->view->mostrarLogin($this->titulo, "Contraseña incorrecta");
+    var_dump($_POST['usuarioId']);
+    var_dump($_POST['passwordId']);
+    if(!empty($_POST['usuarioId']) && !empty($_POST['passwordId'])){
+      $user = $_POST["usuarioId"];
+      $pass = password_hash($_POST["passwordId"], PASSWORD_DEFAULT);
+      $dbUser = $this->model->getUser($user);
+      if(!isset($dbUser[0])){
+        //$this->model->InsertUsuario($user,$pass);
+        $this->verificarLogin();
       }
     }
   }
 }
 
 
- ?>
+   ?>

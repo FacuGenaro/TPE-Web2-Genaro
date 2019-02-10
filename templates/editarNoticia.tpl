@@ -1,8 +1,4 @@
 {include file="header.tpl"}
-<div class="nuevaNoticia">
-  {debug}
-  <div class="container">
- <h2>Formulario Edicion</h2>
  <form method="post" action="{$index}/confirmarEdit">
    <div class="form-group">
      <input type="hidden" class="form-control" id="id_noticiaForm" name="id_noticiaForm" value="{$noticia['id_noticia']}">
@@ -28,8 +24,6 @@
    </div>
    <button type="submit" class="btn btn-primary">Confirmar</button>
  </form>
-</div>
-</div>
 {include file="footer.tpl"}
 <!-- <div class="form-group">
   <label for="descripcionForm">ContenidoFull</label>

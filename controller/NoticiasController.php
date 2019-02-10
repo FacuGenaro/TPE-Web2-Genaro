@@ -54,7 +54,6 @@
       $contenidoPreview = $_POST['contenidoPreview'];
       $categoriaForm = $_POST['categoriaForm'];
       $imagen = $_POST['imagen'];
-      var_dump($imagen);
       if ($categoriaForm== "Futbol"){
         $categoriaForm = 1;
       }else{

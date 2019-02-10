@@ -1,14 +1,14 @@
-<form>
+<!-- <form>
   <div class="form-group" method="post" action="verificarLogin">
-    <label for="exampleInputEmail1">Usuario</label>
-    <input type="input" class="form-control" name="usuarioId">
+    <label>Usuario</label>
+    <input type="text" class="form-control" name="usuario">
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
+    <label>Password</label>
     <input type="password" class="form-control" name="password">
   </div>
   <button type="input" class="btn btn-primary">Submit</button>
   <div class="">
     {$mensaje}
   </div>
-</form>
+</form> -->
