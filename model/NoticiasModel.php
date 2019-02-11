@@ -19,14 +19,14 @@ class NoticiasModel
   }
 
   function getNoticia($id_noticia){ //busca noticia individual en la bd
-    $sentencia = $this->db->prepare( "select * from noticia where id_noticia = ?");
+    $sentencia = $this->db->prepare( "select * from noticia, categoria where noticia.id_categoria = categoria.id_categoria");
     $sentencia->execute(array($id_noticia[0]));
     return $sentencia->fetch(PDO::FETCH_ASSOC);
   }
 
-  function insertarNoticia($titulo, $contenidoPreview, $imagen, $id_categoria){
-    $sentencia = $this->db->prepare( "insert into noticia (titulo,contenidoPreview,imagen,id_categoria) values (?,?,?,?)");
-    $sentencia->execute(array($titulo, $contenidoPreview, $imagen, $id_categoria));
+  function insertarNoticia($titulo, $contenidoPreview, $imagen, $id_categoria, $contenidoFull){
+    $sentencia = $this->db->prepare( "insert into noticia (titulo,contenidoPreview,imagen,id_categoria, contenidoFull) values (?,?,?,?,?)");
+    $sentencia->execute(array($titulo, $contenidoPreview, $imagen, $id_categoria, $contenidoFull));
   }
 
   function borrarNoticiaDB($id_noticia){
@@ -34,9 +34,9 @@ class NoticiasModel
     $sentencia->execute(array($id_noticia[0]));
   }
 
-  function guardarEdicionDB($id_noticia, $titulo, $contenidoPreview, $id_categoria, $imagen){
-    $sentencia = $this->db->prepare( "update noticia set titulo = ?, contenidoPreview = ?, imagen = ?, id_categoria = ? where id_noticia= ?");
-    $sentencia->execute(array($titulo, $contenidoPreview, $imagen, $id_categoria, $id_noticia));
+  function guardarEdicionDB($titulo, $contenidoPreview, $imagen, $id_categoria, $contenidoFull, $id_noticia){
+    $sentencia = $this->db->prepare( "update noticia set titulo = ?, contenidoPreview = ?, imagen = ?, id_categoria = ?, contenidoFull = ? where id_noticia= ?");
+    $sentencia->execute(array($titulo, $contenidoPreview, $imagen, $id_categoria, $contenidoFull, $id_noticia));
   }
 
   function getIdCategoria($categoria){

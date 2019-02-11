@@ -14,6 +14,10 @@
         <input type="text" class="form-control" id="contenidoPreview" name="contenidoPreview" value="{$noticia['contenidoPreview']}">
       </div>
       <div class="form-group">
+        <label for="descripcionForm">ContenidoFull</label>
+        <input type="text" class="form-control" id="contenidoFull" name="contenidoFull" value="{$noticia['contenidoFull']}">
+      </div>
+      <div class="form-group">
         <label for="sel1">Categoria:</label>
         <select class="form-control" id="sel1" id="categoriaForm" name="categoriaForm" value="{$noticia['categoriaForm']}">
           <option>Futbol</option>

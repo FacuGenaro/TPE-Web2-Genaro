@@ -10,6 +10,7 @@ class ConfigApp
       'home'=> 'NoticiasController#getIndex',
       'borrar'=> 'NoticiasController#borrarNoticia',
       'editar'=> 'NoticiasController#editarNoticia',
+      'masInfo'=> 'NoticiasController#getMasInformacion',
       'confirmarEdit'=> 'NoticiasController#confirmarEdit',
       'agregar'=> 'NoticiasController#agregarNoticia',
       'login'=> 'LoginController#login',

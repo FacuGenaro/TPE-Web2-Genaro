@@ -18,21 +18,22 @@ class LoginModel
     return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  function getUser($id_usuario){ //usuario individual
+  function getUser($user){
     $sentencia = $this->db->prepare( "select * from usuario where user = ? limit 1");
-    $sentencia->execute(array($id_usuario));
+    $sentencia->execute(array($user));
     return $sentencia->fetch(PDO::FETCH_ASSOC);
   }
 
-  function instertarUsuario($nombre, $pass){
-    $sentencia = $this->db->prepare("insert into usuario(nombre, pass) VALUES(?,?)");
-    $sentencia->execute(array($nombre, $pass));
-  }
 
-  function deleteUsuario($usuario){
-    $sentencia = $this->db->prepare("delete from usuario where id_usuario=?");
-    $sentencia->execute(array($usuario));
-  }
+  // function instertarUsuario($nombre, $pass){
+  //   $sentencia = $this->db->prepare("insert into usuario(nombre, pass) VALUES(?,?)");
+  //   $sentencia->execute(array($nombre, $pass));
+  // }
+  //
+  // function deleteUsuario($usuario){
+  //   $sentencia = $this->db->prepare("delete from usuario where id_usuario=?");
+  //   $sentencia->execute(array($usuario));
+  // }
   // function darPermiso($usuario){
   //   $sentencia = $this->db->prepare("update `usuario` set `admin`=1 where `id_usuario`=?");
   //     $sentencia->execute(array($usuario));

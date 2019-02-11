@@ -12,8 +12,6 @@ function parseURL($url)
 {
   $urlExploded = explode('/', $url);
   $arrayReturn[ConfigApp::$ACTION] = $urlExploded[0];
-
-  #borrar/1/2/3/4
   $arrayReturn[ConfigApp::$PARAMS] = isset($urlExploded[1]) ? array_slice($urlExploded,1) : null;
   return $arrayReturn;
 }

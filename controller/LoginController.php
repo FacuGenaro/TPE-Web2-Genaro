@@ -12,7 +12,7 @@ class LoginController
   {
     $this->view = new LoginView();
     $this->model = new LoginModel();
-    $this->titulo ="Login";
+    $this->titulo ="Noticias Deportes";
   }
 
   function login(){
@@ -24,6 +24,7 @@ class LoginController
       $user = $_POST["usuarioId"];
       $pass = $_POST["passwordId"];
       $dbUser = $this->model->getUser($user);
+      var_dump($db_user);
       if (password_verify($pass, $dbUser["pass"])) {
         header("Location: http://".$_SERVER["SERVER_NAME"].dirname($_SERVER["PHP_SELF"]));
       } else {

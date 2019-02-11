@@ -6,7 +6,7 @@
      <img src= "{$curr_news['imagen']}" alt="">
    </div>
    <p>{$curr_news['contenidoPreview']} </p>
-   <p><a class="btn btn-secondary" href="#" role="button">Más información</a></p>
+   <p><a class="btn btn-secondary" href="masInfo/{$curr_news['id_noticia']}" role="button">Más información</a></p>
  </div>
 {/foreach}
 </body>
