@@ -1,10 +1,9 @@
-  <?php
-  require_once "./view/LoginView.php";
-  //require_once "./model/LoginModel.php";
+<?php
+require_once "./view/LoginView.php";
+require_once "./model/LoginModel.php";
 
 class LoginController
 {
-
   private $view;
   private $model;
   private $titulo;
@@ -12,7 +11,7 @@ class LoginController
   function __construct()
   {
     $this->view = new LoginView();
-  //  $this->model = new LoginModel();
+    $this->model = new LoginModel();
     $this->titulo ="Login";
   }
 
@@ -21,19 +20,19 @@ class LoginController
   }
 
   function verificarLogin(){
-    var_dump($_POST['usuarioId']);
-    var_dump($_POST['passwordId']);
-    if(!empty($_POST['usuarioId']) && !empty($_POST['passwordId'])){
+    if (!empty($_POST['usuarioId']) && !empty($_POST['passwordId'])){
       $user = $_POST["usuarioId"];
-      $pass = password_hash($_POST["passwordId"], PASSWORD_DEFAULT);
+      $pass = $_POST["passwordId"];
       $dbUser = $this->model->getUser($user);
-      if(!isset($dbUser[0])){
-        //$this->model->InsertUsuario($user,$pass);
-        $this->verificarLogin();
+      if (password_verify($pass, $dbUser["pass"])) {
+        header("Location: http://".$_SERVER["SERVER_NAME"].dirname($_SERVER["PHP_SELF"]));
+      } else {
+        $this->view->mostrarLogin($this->titulo, "Contraseña incorrecta");
       }
+    } else {
+      $this->view->mostrarLogin($this->titulo, "Explotó");
     }
   }
 }
 
-
-   ?>
+?>
