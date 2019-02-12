@@ -7,8 +7,8 @@
   </div>
   <div class="nuevaNoticia">
     <div class="container">
-      <h2>Formulario</h2>
-      <form method="post" action="agregar">
+      <h2>Agregar noticia</h2>
+      <form method="post" action="agregarNoticia">
         <div class="form-group">
           <label for="tituloForm">Titulo</label>
           <input type="text" class="form-control" name="tituloForm">

@@ -13,7 +13,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <a class="navbar-brand" href="{$index}">{$titulo}</a>
       <a class="navbar-brand" href="{$index}/login">Login</a>
-      <!-- <a class="navbar-brand" href="">{$titulo}</a> -->
+      <a class="navbar-brand" href="{$index}/categorias">Categorias</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

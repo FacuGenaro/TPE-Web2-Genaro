@@ -3,6 +3,7 @@
 
 require_once "config/ConfigApp.php";
 require_once "controller/NoticiasController.php";
+require_once "controller/CategoriasController.php";
 require_once "controller/LoginController.php";
 
 // define('ACTION', 0);
