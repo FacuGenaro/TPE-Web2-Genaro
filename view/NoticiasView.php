@@ -14,19 +14,26 @@ class NoticiasView
     $this->Smarty->display('templates/index.tpl');
   }
 
-  function editarNoticia($titulo, $noticia){
+  function editarNoticia($titulo, $noticia, $categorias){
     $this->Smarty->assign('titulo', $titulo);
     $this->Smarty->assign('noticia', $noticia);
+    $this->Smarty->assign('categorias', $categorias);
     $this->Smarty->assign('index', "http://".$_SERVER["SERVER_NAME"].dirname($_SERVER["PHP_SELF"]));
     $this->Smarty->display('templates/editarNoticia.tpl');
   }
 
   function mostrarMasInformacion($titulo, $noticia){
-    //$this->Smarty->debugging = true;
     $this->Smarty->assign('titulo', $titulo);
     $this->Smarty->assign('noticia', $noticia);
     $this->Smarty->assign('index', "http://".$_SERVER["SERVER_NAME"].dirname($_SERVER["PHP_SELF"]));
     $this->Smarty->display('templates/noticiaCompleta.tpl');
+  }
+
+  function agregarNoticia($titulo, $categorias){
+    $this->Smarty->assign('titulo', $titulo);
+    $this->Smarty->assign('categorias', $categorias);
+    $this->Smarty->assign('index', "http://".$_SERVER["SERVER_NAME"].dirname($_SERVER["PHP_SELF"]));
+    $this->Smarty->display('templates/crearNoticia.tpl');
   }
 }
 ?>

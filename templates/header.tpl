@@ -14,6 +14,7 @@
       <a class="navbar-brand" href="{$index}">{$titulo}</a>
       <a class="navbar-brand" href="{$index}/login">Login</a>
       <a class="navbar-brand" href="{$index}/categorias">Categorias</a>
+      <a class="navbar-brand" href="{$index}/crearNuevaNoticia">Crear noticia</a>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
       </div>
     </nav>

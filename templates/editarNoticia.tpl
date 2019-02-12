@@ -19,9 +19,10 @@
       </div>
       <div class="form-group">
         <label for="sel1">Categoria:</label>
-        <select class="form-control" id="sel1" id="categoriaForm" name="categoriaForm" value="{$noticia['categoriaForm']}">
-          <option>Futbol</option>
-          <option>Esports</option>
+        <select class="form-control" id="sel1" name="categoriaForm">
+          {foreach from=$categorias item=$categoria }
+            <option>{$categoria['titulo_categoria']}</option>
+          {/foreach}
         </select>
       </div>
       <div class="form-group">

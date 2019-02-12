@@ -45,6 +45,12 @@ class NoticiasModel
     return $sentencia->fetch(PDO::FETCH_ASSOC);
   }
 
+  function getCategorias(){
+    $sentencia = $this->db->prepare( "select * from categoria");
+    $sentencia->execute();
+    return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+  }
+
 }
 
 ?>

@@ -22,7 +22,6 @@ class CategoriasView
   }
 
   function mostrarNoticiasFiltradas($titulo, $noticiasFiltradas, $tituloCategoria){
-    $this->Smarty->debugging = true;
     $this->Smarty->assign('titulo', $titulo);
     $this->Smarty->assign('noticia', $noticiasFiltradas);
     $this->Smarty->assign('nombreCategoria', $tituloCategoria);

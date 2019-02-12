@@ -40,7 +40,7 @@ class CategoriasController
 
   function borrarCategoria($id_categoria){
     $this->model->borrarCategoriaDB($id_categoria);
-    header('Location: http://'.$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]). '/categorias');
+  //  header('Location: http://'.$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]). '/categorias');
   }
 
   function filtrarNoticias($id_categoria){

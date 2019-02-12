@@ -7,6 +7,7 @@ class NoticiasController
   private $view;
   private $model;
   private $titulo;
+  // private $categorias;
 
   function __construct()
   {
@@ -23,6 +24,11 @@ class NoticiasController
   function getMasInformacion($id_noticia){
     $arrNoticias = $this->model->getNoticia($id_noticia);
     $this->view->mostrarMasInformacion($this->titulo, $arrNoticias);
+  }
+
+  function nuevaNoticia(){
+    $categorias = $this->model->getCategorias();
+    $this->view->agregarNoticia($this->titulo,$categorias);
   }
 
   function agregarNoticia(){
@@ -43,7 +49,8 @@ class NoticiasController
 
   function editarNoticia($id_noticia){
     $noticia = $this->model->getNoticia($id_noticia);
-    $this->view->editarNoticia("Editar Noticia", $noticia);
+    $categorias = $this->model->getCategorias();
+    $this->view->editarNoticia($this->titulo, $noticia, $categorias);
   }
 
   function confirmarEdit(){
@@ -51,6 +58,7 @@ class NoticiasController
     $titulo = $_POST['tituloForm'];
     $contenidoPreview = $_POST['contenidoPreview'];
     $categoria = $_POST['categoriaForm'];
+    var_dump($categoria);
     $contenidoFull = $_POST["contenidoFull"];
     $imagen = $_POST['imagen'];
     $id_categoria = $this->model->getIdCategoria($categoria)["id_categoria"];

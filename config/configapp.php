@@ -16,6 +16,7 @@ class ConfigApp
       'confirmarEdit'=> 'NoticiasController#confirmarEdit',
       'confirmarEditCategoria' => 'CategoriasController#confirmarEditCategoria',
       'masInfo'=> 'NoticiasController#getMasInformacion',
+      'crearNuevaNoticia' => 'NoticiasController#nuevaNoticia',
       'agregarNoticia'=> 'NoticiasController#agregarNoticia',
       'agregarCategoria' => 'CategoriasController#agregarCategoria',
       'filtrarPorCategoria' => 'CategoriasController#filtrarNoticias',
