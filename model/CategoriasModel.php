@@ -40,7 +40,6 @@ class CategoriasModel
   }
 
   function getNoticiasFiltradas($id_categoria){
-  //  $sentencia = $this->db->prepare( "select * from noticia where id_categoria = ?");
     $sentencia = $this->db->prepare( "select * from noticia where id_categoria = ?");
     $sentencia->execute(array($id_categoria[0]));
     return $sentencia->fetchAll(PDO::FETCH_ASSOC);

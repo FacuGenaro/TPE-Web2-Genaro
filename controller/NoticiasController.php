@@ -1,16 +1,17 @@
 <?php
 require_once "./view/NoticiasView.php";
 require_once "./model/NoticiasModel.php";
+require_once "SecuredController.php";
 
-class NoticiasController
+class NoticiasController extends SecuredController
 {
   private $view;
   private $model;
   private $titulo;
-  // private $categorias;
 
   function __construct()
   {
+    parent::__construct();
     $this->view = new NoticiasView();
     $this->model = new NoticiasModel();
     $this->titulo ="Noticias Deportes";
@@ -18,7 +19,7 @@ class NoticiasController
 
   function getIndex(){
     $arrNoticias = $this->model->getNoticias();
-    $this->view->mostrarPagina($this->titulo, $arrNoticias);
+    $this->view->mostrarPaginaLogueado($this->titulo, $arrNoticias);
   }
 
   function getMasInformacion($id_noticia){

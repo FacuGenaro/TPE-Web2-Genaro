@@ -1,8 +1,9 @@
 <?php
 require_once "./view/CategoriasView.php";
 require_once "./model/CategoriasModel.php";
+require_once "SecuredController.php";
 
-class CategoriasController
+class CategoriasController extends SecuredController
 {
   private $view;
   private $model;
@@ -10,6 +11,7 @@ class CategoriasController
 
   function __construct()
   {
+    parent::__construct();
     $this->view = new CategoriasView();
     $this->model = new CategoriasModel();
     $this->titulo ="Noticias Deportes";
@@ -17,8 +19,13 @@ class CategoriasController
 
   function getCategorias(){
     $arrCategorias = $this->model->getCategorias();
-    $this->view->mostrarCategorias($this->titulo, $arrCategorias);
+    $this->view->mostrarCategoriasLogueado($this->titulo, $arrCategorias);
   }
+
+  // function getCategoriasVisitante(){
+  //   $arrCategorias = $this->model->getCategorias();
+  //   $this->view->mostrarCategoriasVisitante($this->titulo, $arrCategorias);
+  // }
 
   function agregarCategoria(){
     $titulo = $_POST["tituloForm"];
@@ -40,7 +47,7 @@ class CategoriasController
 
   function borrarCategoria($id_categoria){
     $this->model->borrarCategoriaDB($id_categoria);
-  //  header('Location: http://'.$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]). '/categorias');
+    header('Location: http://'.$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]). '/categorias');
   }
 
   function filtrarNoticias($id_categoria){

@@ -7,12 +7,19 @@ class CategoriasView
     $this->Smarty = new Smarty();
   }
 
-  function mostrarCategorias($titulo, $arrCategorias){
+  function mostrarCategoriasLogueado($titulo, $arrCategorias){
     $this->Smarty->assign('titulo', $titulo);
     $this->Smarty->assign('categorias', $arrCategorias);
     $this->Smarty->assign('index', "http://".$_SERVER["SERVER_NAME"].dirname($_SERVER["PHP_SELF"]));
-    $this->Smarty->display('templates/categorias.tpl');
+    $this->Smarty->display('templates/categoriasLogueado.tpl');
   }
+
+  // function mostrarCategoriasVisitante($titulo, $arrCategorias){
+  //   $this->Smarty->assign('titulo', $titulo);
+  //   $this->Smarty->assign('categorias', $arrCategorias);
+  //   $this->Smarty->assign('index', "http://".$_SERVER["SERVER_NAME"].dirname($_SERVER["PHP_SELF"]));
+  //   $this->Smarty->display('templates/categoriasVisitante.tpl');
+  // }
 
   function editarCategoria($titulo, $categoria){
     $this->Smarty->assign('titulo', $titulo);
@@ -26,7 +33,7 @@ class CategoriasView
     $this->Smarty->assign('noticia', $noticiasFiltradas);
     $this->Smarty->assign('nombreCategoria', $tituloCategoria);
     $this->Smarty->assign('index', "http://".$_SERVER["SERVER_NAME"].dirname($_SERVER["PHP_SELF"]));
-    $this->Smarty->display('templates/noticiasFiltradas.tpl');
+    $this->Smarty->display('templates/noticiasFiltradasVisitante.tpl');
   }
 }
 ?>

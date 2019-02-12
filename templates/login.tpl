@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="headerVisitante.tpl"}
 <div class="noticias">
   <div class="container-fluid">
     <div class="row">

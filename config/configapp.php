@@ -1,4 +1,8 @@
 <?php
+define('HOME', 'Location: http://'.$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
+define('LOGIN', 'Location: http://'.$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]). '/login');
+define('LOGOUT', 'Location: http://'.$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]). '/logout');
+
 require('libs/Smarty.class.php');
 
 class ConfigApp
@@ -21,7 +25,8 @@ class ConfigApp
       'agregarCategoria' => 'CategoriasController#agregarCategoria',
       'filtrarPorCategoria' => 'CategoriasController#filtrarNoticias',
       'login'=> 'LoginController#login',
-      'verificarLogin' => 'LoginController#verificarLogin'
+      'verificarLogin' => 'LoginController#verificarLogin',
+      'logout' => 'LoginController#logout'
     ];
 
 }

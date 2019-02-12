@@ -7,12 +7,19 @@ class NoticiasView
     $this->Smarty = new Smarty();
   }
 
-  function mostrarPagina($titulo, $arrNoticias){
+  function mostrarPaginaLogueado($titulo, $arrNoticias){
     $this->Smarty->assign('titulo', $titulo);
     $this->Smarty->assign('noticia', $arrNoticias);
     $this->Smarty->assign('index', "http://".$_SERVER["SERVER_NAME"].dirname($_SERVER["PHP_SELF"]));
     $this->Smarty->display('templates/index.tpl');
   }
+
+  // function mostrarPaginaVisitante($titulo, $arrNoticias){
+  //   $this->Smarty->assign('titulo', $titulo);
+  //   $this->Smarty->assign('noticia', $arrNoticias);
+  //   $this->Smarty->assign('index', "http://".$_SERVER["SERVER_NAME"].dirname($_SERVER["PHP_SELF"]));
+  //   $this->Smarty->display('templates/indexVisitante.tpl');
+  // }
 
   function editarNoticia($titulo, $noticia, $categorias){
     $this->Smarty->assign('titulo', $titulo);
@@ -26,7 +33,7 @@ class NoticiasView
     $this->Smarty->assign('titulo', $titulo);
     $this->Smarty->assign('noticia', $noticia);
     $this->Smarty->assign('index', "http://".$_SERVER["SERVER_NAME"].dirname($_SERVER["PHP_SELF"]));
-    $this->Smarty->display('templates/noticiaCompleta.tpl');
+    $this->Smarty->display('templates/noticiaCompletaLogueado.tpl');
   }
 
   function agregarNoticia($titulo, $categorias){

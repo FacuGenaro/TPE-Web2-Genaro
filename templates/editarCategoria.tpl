@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="headerLogueado.tpl"}
 <div class="nuevaNoticia">
   <div class="container">
     <form method="post" action="{$index}/confirmarEditCategoria">
