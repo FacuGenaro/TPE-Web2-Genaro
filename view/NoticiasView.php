@@ -11,7 +11,7 @@ class NoticiasView
     $this->Smarty->assign('titulo', $titulo);
     $this->Smarty->assign('noticia', $arrNoticias);
     $this->Smarty->assign('index', "http://".$_SERVER["SERVER_NAME"].dirname($_SERVER["PHP_SELF"]));
-    $this->Smarty->display('templates/index.tpl');
+    $this->Smarty->display('templates/indexLogueado.tpl');
   }
 
   // function mostrarPaginaVisitante($titulo, $arrNoticias){
