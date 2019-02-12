@@ -23,12 +23,12 @@ class CategoriasController
   function agregarCategoria(){
     $titulo = $_POST["tituloForm"];
     $this->model->insertarCategoria($titulo);
-    header("Location: http://".$_SERVER["SERVER_NAME"].dirname($_SERVER["PHP_SELF"]));
+    header('Location: http://'.$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]). '/categorias');
   }
 
   function editarCategoria($id_categoria){
     $categoria = $this->model->getCategoria($id_categoria);
-    $this->view->editarCategoria("Noticias Deportes", $categoria);
+    $this->view->editarCategoria($this->titulo, $categoria);
   }
 
   function confirmarEditCategoria(){
@@ -40,7 +40,13 @@ class CategoriasController
 
   function borrarCategoria($id_categoria){
     $this->model->borrarCategoriaDB($id_categoria);
-      header('Location: http://'.$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]). '/categorias');
+    header('Location: http://'.$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]). '/categorias');
+  }
+
+  function filtrarNoticias($id_categoria){
+    $noticiasFiltradas = $this->model->getNoticiasFiltradas($id_categoria);
+    $tituloCategoria = $this->model->getNombreCategoria($id_categoria);
+    $this->view->mostrarNoticiasFiltradas($this->titulo,$noticiasFiltradas, $tituloCategoria);
   }
 }
 ?>

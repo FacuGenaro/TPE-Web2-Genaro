@@ -38,4 +38,17 @@ class CategoriasModel
     $sentencia = $this->db->prepare( "delete from categoria where id_categoria = ?");
     $sentencia->execute(array($id_categoria[0]));
   }
+
+  function getNoticiasFiltradas($id_categoria){
+  //  $sentencia = $this->db->prepare( "select * from noticia where id_categoria = ?");
+    $sentencia = $this->db->prepare( "select * from noticia where id_categoria = ?");
+    $sentencia->execute(array($id_categoria[0]));
+    return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  function getNombreCategoria($id_categoria){
+    $sentencia = $this->db->prepare( "select * from categoria where id_categoria = ?");
+    $sentencia->execute(array($id_categoria[0]));
+    return $sentencia->fetch(PDO::FETCH_ASSOC);
+  }
 }

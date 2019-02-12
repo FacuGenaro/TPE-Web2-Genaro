@@ -20,5 +20,14 @@ class CategoriasView
     $this->Smarty->assign('index', "http://".$_SERVER["SERVER_NAME"].dirname($_SERVER["PHP_SELF"]));
     $this->Smarty->display('templates/editarcategoria.tpl');
   }
+
+  function mostrarNoticiasFiltradas($titulo, $noticiasFiltradas, $tituloCategoria){
+    $this->Smarty->debugging = true;
+    $this->Smarty->assign('titulo', $titulo);
+    $this->Smarty->assign('noticia', $noticiasFiltradas);
+    $this->Smarty->assign('nombreCategoria', $tituloCategoria);
+    $this->Smarty->assign('index', "http://".$_SERVER["SERVER_NAME"].dirname($_SERVER["PHP_SELF"]));
+    $this->Smarty->display('templates/noticiasFiltradas.tpl');
+  }
 }
 ?>

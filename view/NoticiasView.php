@@ -15,7 +15,6 @@ class NoticiasView
   }
 
   function editarNoticia($titulo, $noticia){
-    //$this->Smarty->debugging = true;
     $this->Smarty->assign('titulo', $titulo);
     $this->Smarty->assign('noticia', $noticia);
     $this->Smarty->assign('index', "http://".$_SERVER["SERVER_NAME"].dirname($_SERVER["PHP_SELF"]));

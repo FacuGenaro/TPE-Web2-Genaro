@@ -18,6 +18,7 @@ class ConfigApp
       'masInfo'=> 'NoticiasController#getMasInformacion',
       'agregarNoticia'=> 'NoticiasController#agregarNoticia',
       'agregarCategoria' => 'CategoriasController#agregarCategoria',
+      'filtrarPorCategoria' => 'CategoriasController#filtrarNoticias',
       'login'=> 'LoginController#login',
       'verificarLogin' => 'LoginController#verificarLogin'
     ];

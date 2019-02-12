@@ -1,7 +1,7 @@
 {include file="header.tpl"}
 {foreach from=$categorias item=curr_category}
  <div class="row-md-4">
-   <h2>{$curr_category['titulo_categoria']} / <a href="borrarCategoria/{$curr_category['id_categoria']}">Borrar categoria</a></li> / <a href="editarCategoria/{$curr_category['id_categoria']}">Editar categoria</a></li></h2>
+   <h2><a href="#">{$curr_category['titulo_categoria']} </a>/ <a href="borrarCategoria/{$curr_category['id_categoria']}">Borrar categoria</a></li> / <a href="editarCategoria/{$curr_category['id_categoria']}">Editar categoria</a></li></h2>
 </div>
 {/foreach}
 <div class="nuevaNoticia">
