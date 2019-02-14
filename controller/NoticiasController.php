@@ -1,17 +1,18 @@
 <?php
 require_once "./view/NoticiasView.php";
 require_once "./model/NoticiasModel.php";
-require_once "SecuredController.php";
+require_once "LoginController.php";
 
-class NoticiasController extends SecuredController
+class NoticiasController
 {
   private $view;
   private $model;
   private $titulo;
+  private $login;
 
   function __construct()
   {
-    parent::__construct();
+    $this->login = new LoginController();
     $this->view = new NoticiasView();
     $this->model = new NoticiasModel();
     $this->titulo ="Noticias Deportes";
@@ -19,17 +20,30 @@ class NoticiasController extends SecuredController
 
   function getIndex(){
     $arrNoticias = $this->model->getNoticias();
-    $this->view->mostrarPaginaLogueado($this->titulo, $arrNoticias);
+    if ($this->login->isLogged()){
+      $this->view->mostrarPaginaLogueado($this->titulo, $arrNoticias);
+    }else{
+      $this->view->mostrarPaginaVisitante($this->titulo, $arrNoticias);
+    }
   }
 
   function getMasInformacion($id_noticia){
-    $arrNoticias = $this->model->getNoticia($id_noticia);
-    $this->view->mostrarMasInformacion($this->titulo, $arrNoticias);
+    $noticia = $this->model->getNoticia($id_noticia);
+    if ($this->login->isLogged()){
+      $this->view->mostrarMasInformacionLogueado($this->titulo, $noticia);
+    }else{
+      $this->view->mostrarMasInformacionVisitante($this->titulo, $noticia);
+    }
   }
+
 
   function nuevaNoticia(){
     $categorias = $this->model->getCategorias();
-    $this->view->agregarNoticia($this->titulo,$categorias);
+    if ($this->login->isLogged()){
+      $this->view->agregarNoticia($this->titulo,$categorias);
+    }else{
+      header(HOME);
+    }
   }
 
   function agregarNoticia(){
@@ -40,7 +54,7 @@ class NoticiasController extends SecuredController
     $categoria = $_POST["categoriaForm"];
     $id_categoria = $this->model->getIdCategoria($categoria)["id_categoria"];
     $this->model->insertarNoticia($titulo, $contenidoPreview, $imagen, $id_categoria, $contenidoFull);
-    header("Location: http://".$_SERVER["SERVER_NAME"].dirname($_SERVER["PHP_SELF"]));
+    header(HOME);
   }
 
   function borrarNoticia($id_noticia){
@@ -49,9 +63,13 @@ class NoticiasController extends SecuredController
   }
 
   function editarNoticia($id_noticia){
-    $noticia = $this->model->getNoticia($id_noticia);
-    $categorias = $this->model->getCategorias();
-    $this->view->editarNoticia($this->titulo, $noticia, $categorias);
+    if ($this->login->isLogged()){
+      $noticia = $this->model->getNoticia($id_noticia);
+      $categorias = $this->model->getCategorias();
+      $this->view->editarNoticia($this->titulo, $noticia, $categorias);
+    }else{
+      header(HOME);
+    }
   }
 
   function confirmarEdit(){
@@ -59,13 +77,12 @@ class NoticiasController extends SecuredController
     $titulo = $_POST['tituloForm'];
     $contenidoPreview = $_POST['contenidoPreview'];
     $categoria = $_POST['categoriaForm'];
-    var_dump($categoria);
     $contenidoFull = $_POST["contenidoFull"];
     $imagen = $_POST['imagen'];
     $id_categoria = $this->model->getIdCategoria($categoria)["id_categoria"];
 
     $this->model->guardarEdicionDB($titulo, $contenidoPreview, $imagen, $id_categoria, $contenidoFull, $id_noticia);
-    header("Location: http://".$_SERVER["SERVER_NAME"].dirname($_SERVER["PHP_SELF"]));
+    header(HOME);
   }
 }
 ?>

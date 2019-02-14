@@ -1,17 +1,18 @@
 <?php
 require_once "./view/CategoriasView.php";
 require_once "./model/CategoriasModel.php";
-require_once "SecuredController.php";
+require_once "LoginController.php";
 
-class CategoriasController extends SecuredController
+class CategoriasController
 {
   private $view;
   private $model;
   private $titulo;
+  private $login;
 
   function __construct()
   {
-    parent::__construct();
+    $this->login = new LoginController();
     $this->view = new CategoriasView();
     $this->model = new CategoriasModel();
     $this->titulo ="Noticias Deportes";
@@ -19,13 +20,12 @@ class CategoriasController extends SecuredController
 
   function getCategorias(){
     $arrCategorias = $this->model->getCategorias();
-    $this->view->mostrarCategoriasLogueado($this->titulo, $arrCategorias);
+    if ($this->login->isLogged()){
+      $this->view->mostrarCategoriasLogueado($this->titulo, $arrCategorias);
+    }else{
+      $this->view->mostrarCategoriasVisitante($this->titulo, $arrCategorias);
+    }
   }
-
-  // function getCategoriasVisitante(){
-  //   $arrCategorias = $this->model->getCategorias();
-  //   $this->view->mostrarCategoriasVisitante($this->titulo, $arrCategorias);
-  // }
 
   function agregarCategoria(){
     $titulo = $_POST["tituloForm"];
@@ -53,7 +53,11 @@ class CategoriasController extends SecuredController
   function filtrarNoticias($id_categoria){
     $noticiasFiltradas = $this->model->getNoticiasFiltradas($id_categoria);
     $tituloCategoria = $this->model->getNombreCategoria($id_categoria);
-    $this->view->mostrarNoticiasFiltradas($this->titulo,$noticiasFiltradas, $tituloCategoria);
+    if ($this->login->isLogged()){
+      $this->view->mostrarNoticiasFiltradasLogueado($this->titulo,$noticiasFiltradas, $tituloCategoria);
+    }else{
+      $this->view->mostrarNoticiasFiltradasVisitante($this->titulo,$noticiasFiltradas, $tituloCategoria);
+    }
   }
 }
 ?>

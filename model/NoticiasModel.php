@@ -18,8 +18,8 @@ class NoticiasModel
     return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  function getNoticia($id_noticia){ //busca noticia individual en la bd
-    $sentencia = $this->db->prepare( "select * from noticia, categoria where noticia.id_categoria = categoria.id_categoria");
+  function getNoticia($id_noticia){
+    $sentencia = $this->db->prepare( "select * from noticia,categoria where noticia.id_noticia=? and noticia.id_categoria=categoria.id_categoria");
     $sentencia->execute(array($id_noticia[0]));
     return $sentencia->fetch(PDO::FETCH_ASSOC);
   }
