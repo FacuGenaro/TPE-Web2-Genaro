@@ -5,12 +5,6 @@ require_once "config/ConfigApp.php";
 require_once "controller/NoticiasController.php";
 require_once "controller/CategoriasController.php";
 require_once "controller/LoginController.php";
-require_once "controller/SecuredController.php";
-require_once "controller/VisitanteController.php";
-
-// define('ACTION', 0);
-// define('PARAMS', 1);
-
 function parseURL($url)
 {
   $urlExploded = explode('/', $url);
