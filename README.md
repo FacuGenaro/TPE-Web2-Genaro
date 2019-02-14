@@ -1,7 +1,8 @@
 # TPE-Web-2-Genaro
 
-#Usuario: userprueba
+Usuario: userprueba
 
-#Contraseña: contraseña
+Contraseña: contraseña
 
-#No permite borrar categorias que tengan noticias... no lo hice queriendo pero no me pareció mal.
+No permite borrar categorias que tengan noticias... no lo hice queriendo pero no me pareció mal.
+
