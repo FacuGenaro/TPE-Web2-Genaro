@@ -1,7 +1,6 @@
 <?php
 require_once "./view/LoginView.php";
 require_once "./model/LoginModel.php";
-require_once "SecuredController.php";
 
 class LoginController
 {
@@ -23,7 +22,16 @@ class LoginController
   function logout(){
     session_start();
     session_destroy();
-    header(LOGIN);
+    header(HOME);
+  }
+
+  function isLogged(){
+    session_start();
+    if (isset($_SESSION["user"])){
+      return true;
+    }else{
+      return false;
+    }
   }
 
 

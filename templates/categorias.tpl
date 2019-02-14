@@ -1,7 +1,7 @@
 {include file="header.tpl"}
 {foreach from=$categorias item=curr_category}
- <div class="row-md-4">
-   <h2><a href="{$index}/filtrarPorCategoria/{$curr_category['id_categoria']}">{$curr_category['titulo_categoria']} </a>/ <a href="borrarCategoria/{$curr_category['id_categoria']}">Borrar categoria</a></li> / <a href="editarCategoria/{$curr_category['id_categoria']}">Editar categoria</a></li></h2>
+<div class="row-md-4">
+  <h2><a href="{$index}/filtrarPorCategoria/{$curr_category['id_categoria']}">{$curr_category['titulo_categoria']} </a>/ <a href="borrarCategoria/{$curr_category['id_categoria']}">Borrar categoria</a></li> / <a href="editarCategoria/{$curr_category['id_categoria']}">Editar categoria</a></li></h2>
 </div>
 {/foreach}
 <div class="nuevaNoticia">
@@ -17,6 +17,6 @@
   </div>
 </div>
 </body>
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/style.css">
 </html>
