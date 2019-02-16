@@ -25,13 +25,17 @@ class NoticiasModel
   }
 
   function insertarNoticia($titulo, $contenidoPreview, $imagen, $id_categoria, $contenidoFull){
-    $sentencia = $this->db->prepare( "insert into noticia (titulo,contenidoPreview,imagen,id_categoria, contenidoFull) values (?,?,?,?,?)");
+    $sentencia = $this->db->prepare( "insert into noticia (titulo,contenidoPreview,imagen,id_categoria,contenidoFull) values (?,?,?,?,?)");
     $sentencia->execute(array($titulo, $contenidoPreview, $imagen, $id_categoria, $contenidoFull));
   }
 
   function borrarNoticiaDB($id_noticia){
-    $sentencia = $this->db->prepare( "delete from noticia where id_noticia = ?");
-    $sentencia->execute(array($id_noticia[0]));
+    $noticia = $this->getNoticia($id_noticia);
+    if(isset($noticia)){
+      $sentencia = $this->db->prepare( "delete from noticia where id_noticia = ?");
+      $sentencia->execute(array($id_noticia[0]));
+    }
+    return $noticia;
   }
 
   function guardarEdicionDB($titulo, $contenidoPreview, $imagen, $id_categoria, $contenidoFull, $id_noticia){
