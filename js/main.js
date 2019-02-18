@@ -1,15 +1,16 @@
-'use strict'
-let templateNoticias;
-fetch("js/templates/noticias.handlebars")
-.then(response => response.text())
-.then(templateNoticias => { handlebars.compile(template);
-  getNoticias();
-});
+  'use strict'
 
+  let templateNoticias;
 
+  fetch("js/templates/noticiasVisitante.handlebars")
+  .then(response => response.text())
+  .then(template => {
+    templateNoticias = Handlebars.compile(template);
+    getNoticias();
+  });
 
   function getNoticias(){
-    fetch("api/noticias")
+    fetch("api/noticia")
     .then(response=>response.json())
     .then(jsonNoticias=>{
       mostrarNoticias(jsonNoticias);
@@ -19,7 +20,7 @@ fetch("js/templates/noticias.handlebars")
 
   function mostrarNoticias(jsonNoticias){
     let context = {
-      noticias: jsonNoticias;
+      noticia: jsonNoticias
     }
     let html = templateNoticias(context);
     document.querySelector("#noticias-container").innerHTML = html;

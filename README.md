@@ -4,5 +4,5 @@ Usuario: userprueba
 
 Contraseña: contraseña
 
-No permite borrar categorias que tengan noticias... no lo hice queriendo pero no me pareció mal.
+No permite borrar categorias que tengan noticias... no es un bug, es una feature.
 

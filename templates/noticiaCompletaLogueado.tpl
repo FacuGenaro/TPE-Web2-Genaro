@@ -1,7 +1,7 @@
 {include file="headerLogueado.tpl"}
 <div class="row-md-4">
   <h2>{$noticia['titulo']} / <a href="{$index}/borrar/{$noticia['id_noticia']}">Borrar noticia</a></li> / <a href="{$index}/editar/{$noticia['id_noticia']}">Editar noticia</a></li></h2>
-  <h5> Categoria: {$noticia['titulo_categoria']} </h5>
+  <h5> Categoria: {$noticia['titulo_categoria']} / <a href="{$index}/borrarImagen/{$noticia['id_noticia']}">Borrar imagen</a></h5>
   <div class="imagennoticia">
     <img src= "{$noticia['imagen']}" alt="">
   </div>

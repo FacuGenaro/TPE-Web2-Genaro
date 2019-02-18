@@ -34,17 +34,17 @@ class LoginController
       $user = $_POST["usuarioId"];
       $pass = password_hash($_POST["passwordId"], PASSWORD_DEFAULT);
       $dbUser = $this->model->getUser($user);
-      if(!isset($dbUser[0])){
-        $this->model->insertarUsuario($user,$pass);
+      if (!$dbUser) {
+        $this->model->insertarUsuario($user, $pass);
         $this->verificarLogin();
         header(HOME);
       }
       else{
-        $this->view->mostrarRegistro("Usuario Existente");
+        $this->view->mostrarRegistro($this->titulo,"Usuario Existente");
       }
     }
     else {
-      $this->view->mostrarRegistro("Complete todos los campos");
+      $this->view->mostrarRegistro($this->titulo,"Complete todos los campos");
     }
   }
 
@@ -66,7 +66,7 @@ class LoginController
       if (password_verify($pass, $dbUser["pass"])) {
         session_start();
         $_SESSION["user"] = $user;
-      //  header(HOME);
+       header(HOME);
       } else{
         $this->view->mostrarLogin($this->titulo, "Contraseña incorrecta");
       }

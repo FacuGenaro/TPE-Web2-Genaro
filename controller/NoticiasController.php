@@ -59,7 +59,7 @@ class NoticiasController
 
   function borrarNoticia($id_noticia){
     $this->model->borrarNoticiaDB($id_noticia);
-    header("Location: http://".$_SERVER["SERVER_NAME"].dirname($_SERVER["PHP_SELF"]));
+    header(HOME);
   }
 
   function editarNoticia($id_noticia){
@@ -82,6 +82,11 @@ class NoticiasController
     $id_categoria = $this->model->getIdCategoria($categoria)["id_categoria"];
 
     $this->model->guardarEdicionDB($titulo, $contenidoPreview, $imagen, $id_categoria, $contenidoFull, $id_noticia);
+    header(HOME);
+  }
+
+  function borrarImagen($id_noticia){
+    $this->model->borrarImagenDB($id_noticia);
     header(HOME);
   }
 }

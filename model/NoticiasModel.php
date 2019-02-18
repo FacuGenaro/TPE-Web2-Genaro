@@ -55,6 +55,15 @@ class NoticiasModel
     return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }
 
+  function borrarImagenDB($id_noticia){
+    $noticia = $this->getNoticia($id_noticia);
+    if(isset($noticia)){
+      $sentencia = $this->db->prepare( "update noticia set imagen=null where id_noticia = ?");
+      $sentencia->execute(array($id_noticia[0]));
+    }
+    return $noticia;
+  }
+
 }
 
 ?>
