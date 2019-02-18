@@ -24,6 +24,11 @@ class LoginModel
     return $sentencia->fetch(PDO::FETCH_ASSOC);
   }
 
+  function insertarUsuario($user,$pass){
+    $sentencia = $this->db->prepare("insert into usuario(user, pass)values(?,?)");
+    $sentencia->execute(array($user,$pass));
+  }
+
 }
 
 

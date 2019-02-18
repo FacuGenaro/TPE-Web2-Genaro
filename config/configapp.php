@@ -27,7 +27,9 @@ class ConfigApp
     'filtrarPorCategoria' => 'CategoriasController#filtrarNoticias',
     'login'=> 'LoginController#login',
     'verificarLogin' => 'LoginController#verificarLogin',
-    'logout' => 'LoginController#logout'
+    'logout' => 'LoginController#logout',
+    'registro'=> 'LoginController#registro',
+    'verificarRegistro' => 'LoginController#verificarRegistro'
   ];
 
 }

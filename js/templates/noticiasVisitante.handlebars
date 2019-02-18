@@ -1,0 +1,11 @@
+{{#each noticia}}
+ <div class="row-md-4">
+   <h2>{{titulo}}</h2>
+   <h5> Categoria: {{titulo_categoria}} </h5>
+   <div class="imagennoticia">
+     <img src= "{{imagen}}" alt="">
+   </div>
+   <p>{{contenidoPreview}}</p>
+   <p><a class="btn btn-secondary" href="masInfo/{{id_noticia}}" role="button">Más información</a></p>
+ </div>
+{{/each}}
