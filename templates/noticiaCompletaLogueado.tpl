@@ -7,7 +7,7 @@
   </div>
   <p>{$noticia['contenidoFull']} </p>
 </div>
-<form method="post" action="{$index}/api/comentario/post">
+<form method="post" action="">
   <div class="form-group">
     <input type="hidden" class="form-control" id="id_noticiaForm" name="id_noticiaForm" value="{$noticia['id_noticia']}">
   </div>
@@ -16,7 +16,7 @@
   </div>
   <div class="form-group">
     <label for="puntaje">Puntaje noticia</label>
-    <select class="form-control" id="sel1" name="puntaje">
+    <select class="form-control" id="puntaje" name="puntaje">
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -26,11 +26,12 @@
   </div>
   <div class="form-group">
     <label for="comment">Comentario:</label>
-    <textarea class="form-control" rows="5" id="comment" name="comentario"></textarea>
+    <textarea class="form-control" rows="5" id="comentario" name="comentario"></textarea>
   </div>
-  <button type="submit" class="btn btn-primary">Comentar</button>
+  <button type="submit" class="btn btn-primary" id="enviarComentario">Comentar</button>
 </form>
 </body>
+  <script src="../js/noticiaUsuario.js"></script>
 <link rel="stylesheet" href="../css/bootstrap.css">
 <link rel="stylesheet" href="../css/style.css">
 </html>
