@@ -51,9 +51,56 @@ class LoginController
   function isLogged(){
     session_start();
     if (isset($_SESSION["user"])){
-      return true;
+      if($_SESSION["admin"]== true){
+        return "admin";
+      }
+      return "usuario";
     }else{
-      return false;
+      return "visitante";
+    }
+  }
+
+  function getUsuarios(){
+    $usuarios=$this->model->getUsers();
+    $respuesta = $this->isLogged();
+    if ($respuesta == "admin"){
+      $this->view->mostrarUsuarios($this->titulo,$usuarios);
+    }else{
+      header(HOME);
+    }
+  }
+
+  function darPermisos($id_usuario){
+    $usuarios=$this->model->getUsers();
+    $respuesta = $this->isLogged();
+    if ($respuesta == "admin"){
+      $this->model->darPermisos($id_usuario);
+      header(HOME);
+    }else{
+      header(HOME);
+    }
+  }
+
+  function quitarPermisos($id_usuario){
+    $usuarios=$this->model->getUsers();
+    $respuesta = $this->isLogged();
+    if ($respuesta == "admin"){
+      $this->model->quitarPermisos($id_usuario);
+      header(HOME);
+    }else{
+      header(HOME);
+    }
+
+  }
+
+  function eliminarUsuario($id_usuario){
+    $usuarios=$this->model->getUsers();
+    $respuesta = $this->isLogged();
+    if ($respuesta == "admin"){
+      $this->model->eliminarUsuario($id_usuario);
+      header(HOME);
+    }else{
+      header(HOME);
     }
   }
 
@@ -65,8 +112,9 @@ class LoginController
       $dbUser = $this->model->getUser($user);
       if (password_verify($pass, $dbUser["pass"])) {
         session_start();
-        $_SESSION["user"] = $user;
-       header(HOME);
+        $_SESSION["user"]=$user;
+        $_SESSION["admin"]=$dbUser["admin"];
+        header(HOME);
       } else{
         $this->view->mostrarLogin($this->titulo, "Contraseña incorrecta");
       }

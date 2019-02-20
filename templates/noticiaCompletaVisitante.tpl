@@ -7,6 +7,7 @@
   </div>
   <p>{$noticia['contenidoFull']} </p>
 </div>
+<input type="hidden" class="form-control" id="id_noticiaForm" name="id_noticiaForm" value="{$noticia['id_noticia']}">
 <div id="comentarios-container">
 
 

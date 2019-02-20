@@ -1,8 +1,9 @@
 # TPE-Web-2-Genaro
 
-Usuario: userprueba
-
-Contraseña: contraseña
+Usuario: Admin
+Contraseï¿½a: Admin
+-----------
+Usuario sin privilegios: userprueba
+ContraseÃ±a: contraseÃ±a
 
 No permite borrar categorias que tengan noticias... no es un bug, es una feature.
-

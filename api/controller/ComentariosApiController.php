@@ -27,9 +27,7 @@ class ComentariosApiController extends Api{
       $id_noticia = $param[0];
       $arreglo = $this->model->getComentarios($id_noticia);
       $data = $arreglo;
-    }//else{
-    //  $data = $this->model->getComentarios();
-    //}
+    }
     if(isset($data)){
       return $this->json_response($data, 200);
     }else{

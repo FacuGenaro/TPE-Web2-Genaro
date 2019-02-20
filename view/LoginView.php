@@ -26,6 +26,13 @@ class LoginView
     $this->Smarty->display('templates/registro.tpl');
   }
 
+  function mostrarUsuarios($titulo, $usuarios){
+    $this->Smarty->assign('titulo', $titulo);
+    $this->Smarty->assign('usuario', $usuarios);
+    $this->Smarty->assign('index', "http://".$_SERVER["SERVER_NAME"].dirname($_SERVER["PHP_SELF"]));
+    $this->Smarty->display('templates/listaUsuarios.tpl');
+  }
+
 }
 
 ?>

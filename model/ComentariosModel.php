@@ -30,8 +30,6 @@ class ComentariosModel  {
 
   function eliminarComentario($id_comentario){
     $comentario=$this->getComentario($id_comentario);
-    if(isset($comentario)){
-      var_dump($comentario['id_comentario']);
     $sentencia = $this->db->prepare( "delete from comentarios where id_comentario = ? ");
     $sentencia->execute(array($comentario['id_comentario']));
   }

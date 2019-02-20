@@ -20,9 +20,12 @@ class CategoriasController
 
   function getCategorias() {
     $arrCategorias = $this->model->getCategorias();
-    if ($this->login->isLogged()) {
-      $this->view->mostrarCategoriasLogueado($this->titulo, $arrCategorias);
-    } else {
+    $resultado = $this->login->isLogged();
+    if ($resultado == "admin"){
+      $this->view->mostrarCategoriasAdmin($this->titulo, $arrCategorias);
+    }elseif ($resultado == "usuario"){
+      $this->view->mostrarCategoriasUsuario($this->titulo, $arrCategorias);
+    }elseif ($resultado == "visitante"){
       $this->view->mostrarCategoriasVisitante($this->titulo, $arrCategorias);
     }
   }
@@ -53,9 +56,12 @@ class CategoriasController
   function filtrarNoticias($id_categoria) {
     $noticiasFiltradas = $this->model->getNoticiasFiltradas($id_categoria);
     $tituloCategoria = $this->model->getNombreCategoria($id_categoria);
-    if ($this->login->isLogged()){
-      $this->view->mostrarNoticiasFiltradasLogueado($this->titulo,$noticiasFiltradas, $tituloCategoria);
-    } else {
+    $resultado = $this->login->isLogged();
+    if ($resultado == "admin"){
+      $this->view->mostrarNoticiasFiltradasAdmin($this->titulo,$noticiasFiltradas, $tituloCategoria);
+    }elseif ($resultado == "usuario"){
+      $this->view->mostrarNoticiasFiltradasUsuario($this->titulo,$noticiasFiltradas, $tituloCategoria);
+    }elseif ($resultado == "visitante"){
       $this->view->mostrarNoticiasFiltradasVisitante($this->titulo,$noticiasFiltradas, $tituloCategoria);
     }
   }

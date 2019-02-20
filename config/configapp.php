@@ -3,6 +3,7 @@
 define('HOME', 'Location: http://'.$_SERVER["SERVER_NAME"]. ":". $_SERVER['SERVER_PORT'] . dirname($_SERVER["PHP_SELF"]));
 define('LOGIN', HOME. '/login');
 define('LOGOUT', HOME. '/logout');
+define('USUARIOS', HOME. '/getUsuarios');
 
 require('libs/Smarty.class.php');
 
@@ -31,6 +32,10 @@ class ConfigApp
     'registro'=> 'LoginController#registro',
     'verificarRegistro' => 'LoginController#verificarRegistro',
     'borrarImagen' => 'NoticiasController#borrarImagen',
+    'getUsuarios' => 'LoginController#getUsuarios',
+    'darPermisos' => 'LoginController#darPermisos',
+    'quitarPermisos' => 'LoginController#quitarPermisos',
+    'eliminarUsuario' => 'LoginController#eliminarUsuario'
   ];
 
 }

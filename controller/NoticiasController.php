@@ -20,22 +20,27 @@ class NoticiasController
 
   function getIndex(){
     $arrNoticias = $this->model->getNoticias();
-    if ($this->login->isLogged()){
-      $this->view->mostrarPaginaLogueado($this->titulo, $arrNoticias);
-    }else{
+    $resultado = $this->login->isLogged();
+    if ($resultado == "admin"){
+      $this->view->mostrarPaginaAdmin($this->titulo, $arrNoticias);
+    }elseif ($resultado == "usuario"){
+      $this->view->mostrarPaginaUsuario($this->titulo, $arrNoticias);
+    }elseif ($resultado == "visitante"){
       $this->view->mostrarPaginaVisitante($this->titulo, $arrNoticias);
     }
   }
 
   function getMasInformacion($id_noticia){
     $noticia = $this->model->getNoticia($id_noticia);
-    if ($this->login->isLogged()){
-      $this->view->mostrarMasInformacionLogueado($this->titulo, $noticia);
-    }else{
+    $resultado = $this->login->isLogged();
+    if ($resultado == "admin"){
+      $this->view->mostrarMasInformacionAdmin($this->titulo, $noticia);
+    }elseif ($resultado == "usuario"){
+      $this->view->mostrarMasInformacionUsuario($this->titulo, $noticia);
+    }elseif ($resultado == "visitante"){
       $this->view->mostrarMasInformacionVisitante($this->titulo, $noticia);
     }
   }
-
 
   function nuevaNoticia(){
     $categorias = $this->model->getCategorias();
@@ -63,7 +68,8 @@ class NoticiasController
   }
 
   function editarNoticia($id_noticia){
-    if ($this->login->isLogged()){
+    $resultado = $this->login->isLogged();
+    if ($resultado == "admin"){
       $noticia = $this->model->getNoticia($id_noticia);
       $categorias = $this->model->getCategorias();
       $this->view->editarNoticia($this->titulo, $noticia, $categorias);
