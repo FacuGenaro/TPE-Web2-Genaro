@@ -7,7 +7,11 @@
   </div>
   <p>{$noticia['contenidoFull']} </p>
 </div>
-<form method="post" action="">
+<div id="comentarios-container">
+
+
+</div>
+<form method="post" action="" id="form">
   <div class="form-group">
     <input type="hidden" class="form-control" id="id_noticiaForm" name="id_noticiaForm" value="{$noticia['id_noticia']}">
   </div>
@@ -28,10 +32,10 @@
     <label for="comment">Comentario:</label>
     <textarea class="form-control" rows="5" id="comentario" name="comentario"></textarea>
   </div>
-  <button type="submit" class="btn btn-primary" id="enviarComentario">Comentar</button>
+  <button type="submit" class="btn btn-primary">Comentar</button>
 </form>
 </body>
-  <script src="../js/noticiaUsuario.js"></script>
+<script src="../js/noticiaUsuario.js"></script>
 <link rel="stylesheet" href="../css/bootstrap.css">
 <link rel="stylesheet" href="../css/style.css">
 </html>

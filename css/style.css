@@ -57,8 +57,9 @@ footer {
 /* INICIO NOTICIAS MAIN */
 
 .row-md-4{
-  margin-left: 40px;
-  margin-bottom: 25px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 100px;
   padding-left: 25px;
   border: white 1px solid;
   border-radius: 25px;
@@ -121,4 +122,10 @@ h1{
   padding-right: 30px;
   margin-bottom: 95px;
   /* border: white 1px solid; */
+}
+
+#comentarios{
+  border-bottom: white 2px solid;
+  margin-left: 50px;
+  margin-right: 50px;
 }

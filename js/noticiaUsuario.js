@@ -1,57 +1,70 @@
 'use strict'
-// let templateNoticiaUser;
+let templateComentarios;
+let id_noticia = document.querySelector("#id_noticiaForm").value;
+let getUrl = window.location;
+let baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 
-// fetch('js/templates/noticiaUsuario.handlebars')
-//   .then(response => response.text())
-//   .then(template => {
-//     templateNoticiaUser = Handlebars.compile(template); // compila y prepara el template
-//     let idBanda = document.querySelector("#id_bandaForm").value;
-//     getComentarios(idBanda);
-//   });
+// Subir comentarios
+let button = document.getElementById('form');
+button.addEventListener('submit', send);
 
+function send(e){
+  e.preventDefault()
+  let id_noticia = document.querySelector("#id_noticiaForm").value;
+  let comentario = document.querySelector("#comentario").value;
+  let puntaje = document.querySelector("#puntaje").value;
+  let id_usuario = document.querySelector("#id_usuarioForm").value;
+  let comentarios = {
+    "comentario": comentario,
+    "puntaje": puntaje,
+    "id_noticia": id_noticia,
+    "id_usuario": id_usuario,
+  }
+  let body = JSON.stringify(comentarios);
+  console.log(body);
 
-
-// function getComentarios(id_noticia) {
-//   fetch("api/comentarios/"+ id_noticia)
-//     .then(response => response.json())
-//     .then(jsonComentarios => {
-//       mostrarComentarios(jsonComentarios);
-//     })
-// }
-
-// function mostrarComentarios(jsonComentarios) {
-//   let context = {
-//     comentarios: jsonComentarios
-//     //otra: "hola
-//   }
-//   let html = templateNoticiaUser(context);
-//   document.querySelector("#comentarios-container").innerHTML = html;
-// }
-
-let evento = document.getElementById("#enviarComentario");
-evento.addEventListener("click", function(){
-    event.preventDefault();
-    console.log("boton uwu");
-    let id_noticia = document.querySelector("#id_noticiaForm").value;
-    let comentario = document.querySelector("#comentario").value;
-    let puntaje = document.querySelector("#puntaje").value;
-    let id_usuario = document.querySelector("#id_usuarioForm").value;
-    let comentarios = {
-      "comentario": comentario,
-      "puntaje": puntaje,
-      "id_noticia": id_noticia,
-      "id_usuario": id_usuario,
-    }
-
-    fetch("api/comentarios/", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(comentarios)
-     }) //.then(response =>
-    //   getComentarios(idBanda)
-    //   .catch(error => console.log("error"));
-    // );
+  fetch(baseUrl + "/api/comentario/", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: body
+  })
+  .then(response => {
+    getComentarios(id_noticia);
   });
+}
+
+
+// Mostrar comentarios
+
+fetch(baseUrl + "/js/templates/comentariosUsuario.handlebars")
+.then(response => {
+  return response.text()
+})
+.then(template => {
+  templateComentarios = Handlebars.compile(template);
+  getComentarios(id_noticia);
+});
+
+function getComentarios(id_noticia){
+  fetch(baseUrl + "/api/comentario/" + id_noticia)
+  .then(response => {
+    return response.json();
+  })
+  .then(jsonComentarios=>{
+    mostrarComentarios(jsonComentarios);
+  })
+}
+
+function mostrarComentarios(jsonComentarios) {
+  let context = {
+    comentarios: jsonComentarios
+  }
+  let html = templateComentarios(context);
+
+  document.querySelector("#comentarios-container").innerHTML = html;
+}
+
+
 // ----
