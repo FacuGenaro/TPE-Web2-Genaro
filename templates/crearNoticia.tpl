@@ -1,4 +1,4 @@
-{include file="headerLogueado.tpl"}
+{include file="headerAdmin.tpl"}
 <div class="nuevaNoticia">
   <div class="container">
     <h2>Agregar noticia</h2>

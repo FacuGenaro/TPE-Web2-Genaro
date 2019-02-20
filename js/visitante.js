@@ -6,7 +6,7 @@ let baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.spli
 
 // Mostrar comentarios
 
-fetch(baseUrl + "/js/templates/comentariosAdmin.handlebars")
+fetch(baseUrl + "/js/templates/comentariosVisitante.handlebars")
 .then(response => {
   return response.text()
 })

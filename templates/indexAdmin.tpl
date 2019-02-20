@@ -1,10 +1,10 @@
-{include file="headerVisitante.tpl"}
+{include file="headerAdmin.tpl"}
 <div class="noticias">
   <div class="container-fluid">
-    <div class="row" id="noticias-container">
+    <div class="row">
       {foreach from=$noticia item=curr_news}
        <div class="row-md-4">
-         <h2>{$curr_news['titulo']}</h2>
+         <h2>{$curr_news['titulo']} / <a href="borrar/{$curr_news['id_noticia']}">Borrar noticia</a></li> / <a href="editar/{$curr_news['id_noticia']}">Editar noticia</a></li></h2>
          <h5> Categoria: {$curr_news['titulo_categoria']} </h5>
          <div class="imagennoticia">
            <img src= "{$curr_news['imagen']}" alt="">
