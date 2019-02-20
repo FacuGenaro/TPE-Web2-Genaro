@@ -6,7 +6,8 @@ class ConfigApi
     public static $PARAMS = 'params';
     public static $RESOURCES = [
       'comentario#POST' => 'ComentariosApiController#insertarComentario',
-      'comentario#GET' => 'ComentariosApiController#mostrarComentarios'
+      'comentario#GET' => 'ComentariosApiController#mostrarComentarios',
+      'comentario#DELETE' => 'ComentariosApiController#eliminarComentario'
     ];
 
 }

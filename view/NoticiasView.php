@@ -33,7 +33,7 @@ class NoticiasView
   function mostrarMasInformacionLogueado($titulo, $noticia){
     $this->Smarty->assign('titulo', $titulo);
     $this->Smarty->assign('noticia', $noticia);
-    $this->Smarty->assign('id_usuario', $_SESSION['user']);
+    $this->Smarty->assign('usuario', $_SESSION['user']);
     $this->Smarty->assign('index', "http://".$_SERVER["SERVER_NAME"].dirname($_SERVER["PHP_SELF"]));
     $this->Smarty->display('templates/noticiaCompletaLogueado.tpl');
   }

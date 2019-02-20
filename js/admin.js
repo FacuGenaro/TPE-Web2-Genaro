@@ -13,12 +13,12 @@ function send(e){
   let id_noticia = document.querySelector("#id_noticiaForm").value;
   let comentario = document.querySelector("#comentario").value;
   let puntaje = document.querySelector("#puntaje").value;
-  let id_usuario = document.querySelector("#id_usuarioForm").value;
+  let usuario = document.querySelector("#usuarioForm").value;
   let comentarios = {
     "comentario": comentario,
     "puntaje": puntaje,
     "id_noticia": id_noticia,
-    "id_usuario": id_usuario,
+    "usuario": usuario
   }
   let body = JSON.stringify(comentarios);
   console.log(body);
@@ -38,7 +38,7 @@ function send(e){
 
 // Mostrar comentarios
 
-fetch(baseUrl + "/js/templates/comentariosUsuario.handlebars")
+fetch(baseUrl + "/js/templates/comentariosAdmin.handlebars")
 .then(response => {
   return response.text()
 })
@@ -54,6 +54,10 @@ function getComentarios(id_noticia){
   })
   .then(jsonComentarios=>{
     mostrarComentarios(jsonComentarios);
+    let botonDelete = document.querySelectorAll("#borrarComentario");
+    botonDelete.forEach(e=> e.addEventListener("click", function(){
+      deleteComment(e.getAttribute("value"))
+    }));
   })
 }
 
@@ -62,9 +66,18 @@ function mostrarComentarios(jsonComentarios) {
     comentarios: jsonComentarios
   }
   let html = templateComentarios(context);
-
   document.querySelector("#comentarios-container").innerHTML = html;
+  }
+
+// Borrar comentarios
+
+function deleteComment(id_comentario){
+  fetch(baseUrl + "/api/comentario/" + id_comentario, {
+      method: 'DELETE',
+      headers: {
+     'Content-Type':'application/json'
+   }
+  }).then(response =>
+      getComentarios(id_noticia)
+  );
 }
-
-
-// ----

@@ -14,7 +14,7 @@ class ComentariosApiController extends Api{
   function insertarComentario(){
     $objetoJson = $this->getJSONData();
     if (isset($objetoJson)) {
-      $respuesta = $this->model->insertarComentario($objetoJson->comentario, $objetoJson->puntaje, $objetoJson->id_noticia, $objetoJson->id_usuario);
+      $respuesta = $this->model->insertarComentario($objetoJson->comentario, $objetoJson->puntaje, $objetoJson->id_noticia, $objetoJson->usuario);
       return $this->json_response($respuesta, 200);
     }
     else {
@@ -37,17 +37,17 @@ class ComentariosApiController extends Api{
     }
   }
 
-  // function DeleteComentario($param = null){
-  //   if(count($param) == 1){
-  //     $id_comentario = $param[0];
-  //     $response =  $this->model->BorrarComentario($id_comentario);
-  //     if($response == false){
-  //       return $this->json_response($response, 300);
-  //     }
-  //     return $this->json_response($response, 200);
-  //   }else{
-  //     return  $this->json_response("No comment specified", 300);
-  //   }
-  // }
+  function eliminarComentario($param = null){
+    if(count($param) == 1){
+      $id_comentario = $param[0];
+      $respuesta =  $this->model->eliminarComentario($id_comentario);
+      if($respuesta == false){
+        return $this->json_response($respuesta, 300);
+      }
+      return $this->json_response($respuesta, 200);
+    }else{
+      return  $this->json_response("No hay comentario", 300);
+    }
+  }
 }
 ?>

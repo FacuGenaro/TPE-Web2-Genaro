@@ -16,7 +16,7 @@
     <input type="hidden" class="form-control" id="id_noticiaForm" name="id_noticiaForm" value="{$noticia['id_noticia']}">
   </div>
   <div class="form-group">
-    <input type="hidden" class="form-control" id="id_usuarioForm" name="id_usuarioForm" value="{$id_usuario}">
+    <input type="hidden" class="form-control" id="usuarioForm" name="usuarioForm" value="{$usuario}">
   </div>
   <div class="form-group">
     <label for="puntaje">Puntaje noticia</label>
@@ -35,7 +35,7 @@
   <button type="submit" class="btn btn-primary">Comentar</button>
 </form>
 </body>
-<script src="../js/noticiaUsuario.js"></script>
+<script src="../js/admin.js"></script>
 <link rel="stylesheet" href="../css/bootstrap.css">
 <link rel="stylesheet" href="../css/style.css">
 </html>

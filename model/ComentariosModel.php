@@ -17,11 +17,24 @@ class ComentariosModel  {
     return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  function insertarComentario($comentario, $puntaje, $id_noticia, $user){
-    // $id_user = $this->db->prepare("select id_usuario from comentarios where (user = ?)")->execute(array($user))->(PDO::FETCH_ASSOC);
-    $sentencia = $this->db->prepare("insert into comentarios (comentario,puntaje,id_noticia,id_usuario) VALUES (?,?,?,?)");
-    return $sentencia->execute(array($comentario, $puntaje, $id_noticia, $id_user));
+  function getComentario($id_comentario){
+    $sentencia = $this->db->prepare( "select * from comentarios where id_comentario = ? ");
+    $sentencia->execute([$id_comentario]);
+    return $sentencia->fetch(PDO::FETCH_ASSOC);
   }
 
+  function insertarComentario($comentario, $puntaje, $id_noticia, $user){
+    $sentencia = $this->db->prepare("insert into comentarios (comentario,puntaje,id_noticia,user) VALUES (?,?,?,?)");
+    return $sentencia->execute(array($comentario, $puntaje, $id_noticia, $user));
+  }
+
+  function eliminarComentario($id_comentario){
+    $comentario=$this->getComentario($id_comentario);
+    if(isset($comentario)){
+      var_dump($comentario['id_comentario']);
+    $sentencia = $this->db->prepare( "delete from comentarios where id_comentario = ? ");
+    $sentencia->execute(array($comentario['id_comentario']));
+  }
+}
 }
 ?>
