@@ -70,40 +70,47 @@ class LoginController
     }
   }
 
-  function darPermisos($id_usuario){
-    $usuarios=$this->model->getUsers();
+  function darPermisos($user){
     $respuesta = $this->isLogged();
     if ($respuesta == "admin"){
-      $this->model->darPermisos($id_usuario);
+      $this->model->darPermisos($user);
       header(HOME);
     }else{
       header(HOME);
     }
   }
 
-  function quitarPermisos($id_usuario){
-    $usuarios=$this->model->getUsers();
+  function quitarPermisos($user){
     $respuesta = $this->isLogged();
+    $adminActual = $_SESSION["user"];
     if ($respuesta == "admin"){
-      $this->model->quitarPermisos($id_usuario);
-      header(HOME);
+      if($adminActual != $user[0]){
+        $this->model->quitarPermisos($user);
+        header(HOME);
+      }else{
+        header(HOME);
+      }
     }else{
       header(HOME);
     }
 
   }
 
-  function eliminarUsuario($id_usuario){
-    $usuarios=$this->model->getUsers();
+  function eliminarUsuario($user){
     $respuesta = $this->isLogged();
+    $adminActual = $_SESSION["user"];
     if ($respuesta == "admin"){
-      $this->model->eliminarUsuario($id_usuario);
-      header(HOME);
+      if($adminActual != $user[0]){
+        $this->model->eliminarUsuario($user);
+        header(HOME);
+      }else{
+        header(HOME);
+      }
     }else{
       header(HOME);
     }
-  }
 
+  }
 
   function verificarLogin(){
     if (!empty($_POST['usuarioId']) && !empty($_POST['passwordId'])){

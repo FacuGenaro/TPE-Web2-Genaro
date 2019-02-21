@@ -29,21 +29,19 @@ class LoginModel
     $sentencia->execute(array($user,$pass));
   }
 
-  function darPermisos($id_usuario){
-    $sentencia = $this->db->prepare( "update usuario set admin = 1 where id_usuario= ?");
-    $sentencia->execute(array($id_usuario[0]));
+  function darPermisos($user){
+    $sentencia = $this->db->prepare( "update usuario set admin = 1 where user= ?");
+    $sentencia->execute(array($user[0]));
   }
 
-  function quitarPermisos($id_usuario){
-    $sentencia = $this->db->prepare( "update usuario set admin = 0 where id_usuario= ?");
-    $sentencia->execute(array($id_usuario[0]));
+  function quitarPermisos($user){
+    $sentencia = $this->db->prepare( "update usuario set admin = 0 where user= ?");
+    $sentencia->execute(array($user[0]));
   }
 
-  function eliminarUsuario($id_usuario){
-    $sentencia = $this->db->prepare( "delete from usuario where id_usuario= ?");
-    $sentencia->execute(array($id_usuario[0]));
+  function eliminarUsuario($user){
+    $sentencia = $this->db->prepare( "delete from usuario where user= ?");
+    $sentencia->execute(array($user[0]));
   }
 }
-
-
 ?>

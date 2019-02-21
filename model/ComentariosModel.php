@@ -34,5 +34,4 @@ class ComentariosModel  {
     $sentencia->execute(array($comentario['id_comentario']));
   }
 }
-}
 ?>
