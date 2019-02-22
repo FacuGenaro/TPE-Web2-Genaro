@@ -12,11 +12,12 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="{$index}">{$titulo}</a>
-      <a class="navbar-brand" href="{$index}/categorias">Categorias</a>
-      <a class="navbar-brand" href="{$index}/crearNuevaNoticia">Crear noticia</a>
-      <a class="navbar-brand" href="{$index}/getUsuarios">Listado de usuarios</a>
-      <a class="navbar-brand" href="{$index}/logout">Logout</a>
+      <a class="navbar-brand" href="{$index}">{$titulo} |</a>
+      <a class="navbar-brand" href="{$index}/categorias"> Categorias |</a>
+      <a class="navbar-brand" href="{$index}/crearNuevaNoticia"> Crear noticia |</a>
+      <a class="navbar-brand" href="{$index}/getUsuarios"> Listado de usuarios |</a>
+      <a class="navbar-brand"> Sesión actual: {$usuario} |</a>
+      <a class="navbar-brand" href="{$index}/logout"> Logout |</a>
       </div>
     </nav>
   </header>

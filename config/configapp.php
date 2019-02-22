@@ -1,6 +1,7 @@
 <?php
 //define('HOME', 'Location: http://'.$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
 define('HOME', 'Location: http://'.$_SERVER["SERVER_NAME"]. ":". $_SERVER['SERVER_PORT'] . dirname($_SERVER["PHP_SELF"]));
+define ('CATEGORIAS', HOME. '/categorias');
 define('LOGIN', HOME. '/login');
 define('LOGOUT', HOME. '/logout');
 define('USUARIOS', HOME. '/getUsuarios');
@@ -12,26 +13,33 @@ class ConfigApp
   public static $ACTION = 'action';
   public static $PARAMS = 'params';
   public static $ACTIONS = [
+
+    //NoticiasController
     ''=> 'NoticiasController#getIndex',
     'home'=> 'NoticiasController#getIndex',
-    'categorias' => 'CategoriasController#getCategorias',
     'borrar'=> 'NoticiasController#borrarNoticia',
-    'borrarCategoria'=> 'CategoriasController#borrarCategoria',
     'editar'=> 'NoticiasController#editarNoticia',
-    'editarCategoria' => 'CategoriasController#editarCategoria',
     'confirmarEdit'=> 'NoticiasController#confirmarEdit',
-    'confirmarEditCategoria' => 'CategoriasController#confirmarEditCategoria',
     'masInfo'=> 'NoticiasController#getMasInformacion',
     'crearNuevaNoticia' => 'NoticiasController#nuevaNoticia',
     'agregarNoticia'=> 'NoticiasController#agregarNoticia',
+    'borrarImagen' => 'NoticiasController#borrarImagen',
+
+
+    //CategoriasController
+    'categorias' => 'CategoriasController#getCategorias',
+    'borrarCategoria'=> 'CategoriasController#borrarCategoria',
+    'editarCategoria' => 'CategoriasController#editarCategoria',
+    'confirmarEditCategoria' => 'CategoriasController#confirmarEditCategoria',
     'agregarCategoria' => 'CategoriasController#agregarCategoria',
     'filtrarPorCategoria' => 'CategoriasController#filtrarNoticias',
+
+    //LoginController
     'login'=> 'LoginController#login',
     'verificarLogin' => 'LoginController#verificarLogin',
     'logout' => 'LoginController#logout',
     'registro'=> 'LoginController#registro',
     'verificarRegistro' => 'LoginController#verificarRegistro',
-    'borrarImagen' => 'NoticiasController#borrarImagen',
     'getUsuarios' => 'LoginController#getUsuarios',
     'darPermisos' => 'LoginController#darPermisos',
     'quitarPermisos' => 'LoginController#quitarPermisos',

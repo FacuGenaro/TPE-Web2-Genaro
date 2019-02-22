@@ -21,8 +21,7 @@ function send(e){
     "usuario": usuario
   }
   let body = JSON.stringify(comentarios);
-  console.log(body);
-
+  
   fetch(baseUrl + "/api/comentario/", {
     method: 'POST',
     headers: {

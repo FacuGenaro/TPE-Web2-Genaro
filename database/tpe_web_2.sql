@@ -2,10 +2,10 @@
 -- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 21-02-2019 a las 11:30:45
--- Versión del servidor: 10.1.37-MariaDB
--- Versión de PHP: 7.3.1
+-- Host: 127.0.0.1
+-- Generation Time: Feb 22, 2019 at 03:29 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `tpe web 2`
+-- Database: `tpe web 2`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categoria`
+-- Table structure for table `categoria`
 --
 
 CREATE TABLE `categoria` (
@@ -34,18 +34,17 @@ CREATE TABLE `categoria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `categoria`
+-- Dumping data for table `categoria`
 --
 
 INSERT INTO `categoria` (`id_categoria`, `titulo_categoria`) VALUES
-(4, 'BasquetEdit'),
-(7, 'Categoria de prueba'),
-(9, 'Meme');
+(8, 'Memes'),
+(9, 'Futbol');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `comentarios`
+-- Table structure for table `comentarios`
 --
 
 CREATE TABLE `comentarios` (
@@ -57,17 +56,17 @@ CREATE TABLE `comentarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `comentarios`
+-- Dumping data for table `comentarios`
 --
 
 INSERT INTO `comentarios` (`id_comentario`, `user`, `id_noticia`, `comentario`, `puntaje`) VALUES
-(19, 'userprueba', 33, 'Comentario user', 4),
-(20, 'admin', 33, 'Comentario Admin', 5);
+(17, 'admin', 32, 'Comentario de admin', 5),
+(18, 'userprueba', 32, 'Comentario de usuario', 5);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `noticia`
+-- Table structure for table `noticia`
 --
 
 CREATE TABLE `noticia` (
@@ -80,16 +79,17 @@ CREATE TABLE `noticia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `noticia`
+-- Dumping data for table `noticia`
 --
 
 INSERT INTO `noticia` (`id_noticia`, `titulo`, `contenidoPreview`, `imagen`, `id_categoria`, `contenidoFull`) VALUES
-(33, 'Meme de regalo con la pagina', 'Me pasó mucho', 'https://scontent.faep9-1.fna.fbcdn.net/v/t1.0-9/52938321_1966804356779582_8559570113815117824_n.jpg?_nc_cat=102&_nc_ht=scontent.faep9-1.fna&oh=53fc3f2464ec52db2f00184c551c5222&oe=5CEFE8F3', 9, 'MUCHISIMO');
+(32, 'Meme', 'Regalo para la catedra', 'https://scontent.fmdq1-1.fna.fbcdn.net/v/t1.0-9/52938321_1966804356779582_8559570113815117824_n.jpg?_nc_cat=102&_nc_ht=scontent.fmdq1-1.fna&oh=179ae927243c29843b1bc034b8e9b40c&oe=5CEFE8F3', 8, 'Me pasó muy seguido :('),
+(33, 'Noticia 2', 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.', 'https://images.clarin.com/2019/02/03/0txTHRygr_1256x620__1.jpg', 9, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean enim ante, facilisis sit amet ante quis, pretium finibus ipsum. Donec suscipit, magna et placerat lobortis, libero tellus ullamcorper leo, ut dignissim ex magna ac mauris. Fusce quis interdum ipsum, a ullamcorper orci. Quisque luctus, nunc sit amet vestibulum ornare, justo tellus fermentum libero, eu tincidunt lectus dolor quis lectus. Nullam finibus bibendum erat nec hendrerit. Aenean sed velit nisi. Morbi nec fringilla eros. Cras sollicitudin ultricies sodales. Vestibulum sit amet euismod elit. Proin sollicitudin volutpat mi vel venenatis. Praesent urna eros, sollicitudin ut ex posuere, rhoncus fermentum quam. Duis tempus congue dapibus. Ut fermentum pellentesque tortor.          Ut dapibus, est ut luctus venenatis, ligula quam convallis quam, id iaculis tortor justo in lacus. Proin semper arcu turpis, ac pretium odio vestibulum nec. Fusce luctus commodo massa, vitae consequat nisl. Curabitur a viverra eros. Nulla et rutrum dui, sit amet fringi');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Table structure for table `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -100,7 +100,7 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `usuario`
+-- Dumping data for table `usuario`
 --
 
 INSERT INTO `usuario` (`id_usuario`, `user`, `pass`, `admin`) VALUES
@@ -108,18 +108,18 @@ INSERT INTO `usuario` (`id_usuario`, `user`, `pass`, `admin`) VALUES
 (28, 'userprueba', '$2y$10$q72Aaomgw47viRPSXXitsusV274EK2H8z/6S/PeKQNbmipoQbN3FG', 0);
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `categoria`
+-- Indexes for table `categoria`
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id_categoria`),
   ADD KEY `id_categoria` (`id_categoria`);
 
 --
--- Indices de la tabla `comentarios`
+-- Indexes for table `comentarios`
 --
 ALTER TABLE `comentarios`
   ADD PRIMARY KEY (`id_comentario`),
@@ -127,61 +127,61 @@ ALTER TABLE `comentarios`
   ADD KEY `id_noticia` (`id_noticia`);
 
 --
--- Indices de la tabla `noticia`
+-- Indexes for table `noticia`
 --
 ALTER TABLE `noticia`
   ADD PRIMARY KEY (`id_noticia`),
   ADD KEY `id_categoria` (`id_categoria`);
 
 --
--- Indices de la tabla `usuario`
+-- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id_usuario`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `categoria`
+-- AUTO_INCREMENT for table `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT de la tabla `comentarios`
+-- AUTO_INCREMENT for table `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT de la tabla `noticia`
+-- AUTO_INCREMENT for table `noticia`
 --
 ALTER TABLE `noticia`
   MODIFY `id_noticia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
--- AUTO_INCREMENT de la tabla `usuario`
+-- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `comentarios`
+-- Constraints for table `comentarios`
 --
 ALTER TABLE `comentarios`
   ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`id_noticia`) REFERENCES `noticia` (`id_noticia`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `noticia`
+-- Constraints for table `noticia`
 --
 ALTER TABLE `noticia`
-  ADD CONSTRAINT `noticia_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `noticia_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

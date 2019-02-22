@@ -33,25 +33,40 @@ class CategoriasController
   function agregarCategoria(){
     $titulo = $_POST["tituloForm"];
     $this->model->insertarCategoria($titulo);
-    header('Location: http://'.$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]). '/categorias');
+    header(CATEGORIAS);
   }
 
   function editarCategoria($id_categoria) {
     $categoria = $this->model->getCategoria($id_categoria);
-    $this->view->editarCategoria($this->titulo, $categoria);
+    $resultado = $this->login->isLogged();
+    if ($resultado == "admin"){
+      $this->view->editarCategoria($this->titulo, $categoria);
+    }elseif ($resultado == "usuario"){
+      header(CATEGORIAS);
+    }elseif ($resultado == "visitante"){
+      header(CATEGORIAS);
+    }
   }
 
   function confirmarEditCategoria() {
     $titulo = $_POST['tituloForm'];
     $id_categoria = $_POST['id_categoriaForm'];
     $this->model->guardarEdicionDB($titulo, $id_categoria);
-    header('Location: http://'.$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]). '/categorias');
+    header(CATEGORIAS);
   }
 
   function borrarCategoria($id_categoria) {
-    $this->model->borrarCategoriaDB($id_categoria);
-    header('Location: http://'.$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]). '/categorias');
+    $resultado = $this->login->isLogged();
+    if ($resultado == "admin"){
+      $this->model->borrarCategoriaDB($id_categoria);
+      header(CATEGORIAS);
+    }elseif ($resultado == "usuario"){
+      header(CATEGORIAS);
+    }elseif ($resultado == "visitante"){
+      header(CATEGORIAS);
+    }
   }
+
 
   function filtrarNoticias($id_categoria) {
     $noticiasFiltradas = $this->model->getNoticiasFiltradas($id_categoria);
@@ -66,4 +81,5 @@ class CategoriasController
     }
   }
 }
+
 ?>
